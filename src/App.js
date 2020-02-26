@@ -1,66 +1,36 @@
+
+
 // import React, {Component} from 'react';
-// import {connect} from "react-redux";
-// // import { getUsers } from "./store/actions/user";
-// import axios from 'axios';
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import Blog from "./pages/blog/Blog";
+// import Home from "./pages/Home";
 //
 // class App extends Component {
-//      constructor(props) {
-//          super(props);
-//          this.state = {
-//              people: []
-//          }
-//      }
-//
-//     componentDidMount() {
-//         // const API_URL = 'http://localhost:5000';
-//         axios.get( 'http://localhost:5000/users')
-//             .then(res => {
-//                 const people= res.data;
-//                 console.log(people,88888)
-//                 this.setState({ people});
-//                 console.log(this.state.people,22222)
-//             })
-//     }
-//
-//
-//
-//     // handleClick = (values) => {
-//     //     this.props.getUsers(values);
-//     // }
 //     render() {
 //         return (
 //             <div>
-//                 <h1>
-//
-//                 </h1>
-//
+//                 <BrowserRouter>
+//                     <Switch>
+//                         <Route path="/" component={Home} />
+//                         <Route path="/blog" component={Blog} />
+//                         <Route path="/" component={Home} />
+//                     </Switch>
+//                 </BrowserRouter>
 //             </div>
 //         );
 //     }
 // }
 //
-// const mapStateToProps = (state) => ({
-//     authError: state.user.authError,
-//     usersData: state.user.usersData,
-// });
-//
-// const mapDispatchToProps = {
-//     // getUsers,
-// };
-//
-// const AppContainer = connect(
-//     mapStateToProps,
-//     mapDispatchToProps,
-// )(App);
-//
-// export default AppContainer;
+// export default App;
+
 
 
 import React  from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 
-import {requestApiData} from "./store/actions/user";
+import {requestUserApiData} from "./store/actions/user";
+import Blog from './pages/blog/Blog'
 
 
 class App extends React.Component {
@@ -68,39 +38,41 @@ class App extends React.Component {
 
 
     componentDidMount() {
-        this.props.requestApiData();
+        this.props.requestUserApiData();
     }
 
-
-   person = ( x, i ) => (
-    <div key={x.id.value}>
-        {/*<h1>{x.gender}</h1>*/}
-        {/*<h1>{x.name.first}</h1>*/}
-        {/*<h1>{x.name.last}</h1>*/}
-        <h1>{x.username}</h1>
-        <h1>{x.email}</h1>
-        <h1>{x.role}</h1>
-    </div>
-)
+    // handelClick = () => {
+    //     // const data = this.props.data.user
+    //     for (let i = 0; i < this.props.data.user.length; i++) {
+    //         // Iterate over numeric indexes from 0 to 5, as everyone expects.
+    //         console.log();
+    //     }
+    // }
 
 
     render() {
-        const { results  = []} = this.props.data;
-        console.log(results,"47451745745854")
-        console.log(this.props.data.user,"asdlkjashgjks")
+        // const { results  = []} = this.props.data;
+        // console.log(results,"47451745745854")
+        // console.log(this.props.data.user,"asdlkjashgjks")
+        const data = this.props.data.user;
+        console.log(data, "user user user");
+        console.log(this.props.data,88888888)
+
         return (
             <div>
+                <Blog />
                 <h1>
-                    {results.map(this.person)}
+                   <button onClick={this.handelClick}>Click</button>
                 </h1>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({data: state.data });
+const mapStateToProps = state => ({data: state.user });
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({requestApiData}, dispatch);
+    bindActionCreators({requestUserApiData}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+

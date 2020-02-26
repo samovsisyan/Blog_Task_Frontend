@@ -36,16 +36,15 @@
 
 
 
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { REQUEST_API_DATA, receiveApiData } from "../actions/user";
+import { REQUEST_USER_API_DATA, receiveUserApiData } from "../actions/user";
 import { fetchData } from '../../api';
 
-function* getApiData(action) {
+function* getUserApiData(action) {
     try{
         const data = yield call(fetchData);
-        // console.log(data,8888)
-        yield put(receiveApiData(data));
+        yield put(receiveUserApiData(data));
     }catch (e) {
         console.log(e)
     }
@@ -53,5 +52,5 @@ function* getApiData(action) {
 
 
 export default function* mySaga() {
-    yield takeLatest(REQUEST_API_DATA, getApiData);
+    yield takeLatest(REQUEST_USER_API_DATA, getUserApiData);
 }

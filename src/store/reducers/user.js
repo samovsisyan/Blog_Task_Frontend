@@ -1,36 +1,11 @@
-import {
-    USERS_REQUEST,
-    USERS_SUCCESS,
-    USERS_FAIL,
+import { RECEIVE_USER_API_DATA } from "../actions/user";
 
-} from "../actions/user";
 
-const initialState = {
-    authError: '',
-    usersData: {},
-};
-
-export default function reducer(state = initialState, action) {
-
-    switch (action.type) {
-        case USERS_REQUEST: {
-            return { ...state, authError: '' };
-        }
-        case USERS_SUCCESS: {
-            return {
-                ...state,
-                authError: '',
-                usersData: action.payload.usersData,
-            };
-        }
-        case USERS_FAIL: {
-            return { ...state, authError: action.message };
-        }
-
-        default: {
-            return state;
-        }
+export default (state = {}, {type, data}) => {
+    switch (type) {
+        case RECEIVE_USER_API_DATA:
+            return data;
+        default:
+          return state;
     }
 }
-
-

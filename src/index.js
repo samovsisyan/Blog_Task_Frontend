@@ -5,6 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
+import "./assets/grid/display_grid.css";
+import "./assets/style/style.css";
+import "./assets/css/style.css";
+
+
+
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import {Provider} from 'react-redux';
@@ -18,7 +24,7 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
     reducers,
     applyMiddleware(sagaMiddleware)
-)
+);
 
 // then run the saga
 sagaMiddleware.run(sagas);
