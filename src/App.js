@@ -74,7 +74,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home'
-import Blog from './pages/Blog'
+import Contact from './pages/Contact'
 
 class App extends Component {
     render() {
@@ -82,8 +82,8 @@ class App extends Component {
             <div>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/" component={Home} />
-                        <Route path="/blog" component={Blog} />
+                        <Route exact path="/" component={Home} />
+                        <Route path="/contact" component={Contact} />
                     </Switch>
                 </BrowserRouter>
             </div>
