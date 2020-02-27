@@ -5,26 +5,36 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-// import "./assets/blog_css/css/bootstrap.css";
-// import "./assets/blog_css/css/bootstrap.css/bootstrap.min.css";
+/*CSS BLOG START*/
 import "./assets/blog_css/css/bootstrap/bootstrap-grid.css";
 import "./assets/blog_css/css/bootstrap/bootstrap-reboot.css";
 import "./assets/blog_css/css/aos.css";
 import "./assets/blog_css/css/bootstrap.min.css";
 import "./assets/blog_css/css/bootstrap-datepicker.css";
-// import "./assets/blog_css/css/jquery.fancybox.min.css";
-// import "./assets/blog_css/css/jquery.mb.YTPlayer.min.css";
-// import "./assets/blog_css/css/jquery-ui.css";
 import "./assets/blog_css/css/magnific-popup.css";
-// import "./assets/blog_css/css/mediaelementplayer.css";
-// import "./assets/blog_css/css/owl.carousel.min.css";
 import "./assets/blog_css/css/owl.theme.default.min.css";
 import "./assets/blog_css/css/style.css";
-
-
 import "./assets/grid/display_grid.css";
-// import "./assets/blog_css/style/style.css";
-// import './assets/blog_css/admin_css/css/style.css'
+/*CSS BLOG END*/
+
+
+/*CSS LOGIN START*/
+import "./assets/login_css/css/main.css";
+import "./assets/login_css/css/util.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap.min.css";
+import "./assets/login_css/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap-grid.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap-reboot.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap.min.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap-grid.min.css";
+import "./assets/login_css/vendor/bootstrap/css/bootstrap-reboot.min.css";
+// import "./assets/login_css/fonts/fonts/Linearicons-Free-v1.0.0/icon-font.min.css";
+// import "./assets/login_css/fonts/fonts/vendor/animate/animate.css";
+// import "./assets/login_css/fonts/fonts/vendor/css-hamburgers/hamburgers.min.css";
+// import "./assets/login_css/fonts/fonts/vendor/select2/select2.min.css";
+/*CSS LOGIN END*/
+
 
 
 

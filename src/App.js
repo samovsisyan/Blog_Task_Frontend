@@ -76,6 +76,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import Blog from "./pages/blog/Blog";
+import Login from "./pages/user/Login";
 
 class App extends Component {
     render() {
@@ -86,6 +87,7 @@ class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/blog" component={Blog} />
+                        <Route path="/user/login" component={Login} />
                     </Switch>
                 </BrowserRouter>
             </div>
