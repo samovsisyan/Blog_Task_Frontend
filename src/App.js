@@ -2,7 +2,7 @@
 
 // import React, {Component} from 'react';
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import Blog from "./pages/blog/Blog";
+// import blog from "./pages/blog/blog";
 // import Home from "./pages/Home";
 //
 // class App extends Component {
@@ -12,7 +12,7 @@
 //                 <BrowserRouter>
 //                     <Switch>
 //                         <Route path="/" component={Home} />
-//                         <Route path="/blog" component={Blog} />
+//                         <Route path="/blog" component={blog} />
 //                         <Route path="/" component={Home} />
 //                     </Switch>
 //                 </BrowserRouter>
@@ -30,7 +30,7 @@
 // import { connect } from 'react-redux';
 //
 // import {requestUserApiData} from "./store/actions/user";
-// import Blog from './pages/blog/Blog'
+// import blog from './pages/blog/blog'
 //
 //
 // class App extends React.Component {
@@ -54,7 +54,7 @@
 //
 //         return (
 //             <div>
-//                 <Blog />
+//                 <blog />
 //                 <h1>
 //                    <button onClick={this.handelClick}>Click</button>
 //                 </h1>
@@ -75,6 +75,7 @@ import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './pages/Home'
 import Contact from './pages/Contact'
+import Blog from "./pages/blog/Blog";
 
 class App extends Component {
     render() {
@@ -84,6 +85,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/contact" component={Contact} />
+                        <Route path="/blog" component={Blog} />
                     </Switch>
                 </BrowserRouter>
             </div>
