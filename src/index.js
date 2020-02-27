@@ -29,12 +29,21 @@ import "./assets/login_css/vendor/bootstrap/css/bootstrap-reboot.css";
 import "./assets/login_css/vendor/bootstrap/css/bootstrap.min.css";
 import "./assets/login_css/vendor/bootstrap/css/bootstrap-grid.min.css";
 import "./assets/login_css/vendor/bootstrap/css/bootstrap-reboot.min.css";
-// import "./assets/login_css/fonts/fonts/Linearicons-Free-v1.0.0/icon-font.min.css";
-// import "./assets/login_css/fonts/fonts/vendor/animate/animate.css";
-// import "./assets/login_css/fonts/fonts/vendor/css-hamburgers/hamburgers.min.css";
-// import "./assets/login_css/fonts/fonts/vendor/select2/select2.min.css";
 /*CSS LOGIN END*/
 
+
+/*CSS REGISTRATION START*/
+
+import "./assets/registration/css/main.css";
+import "./assets/registration/css/main.min.css";
+import "./assets/registration/vendor/select2/select2.min.css";
+import "./assets/registration/vendor/datepicker/daterangepicker.css";
+import "./assets/registration/vendor/font-awesome-4.7/css/font-awesome.css";
+import "./assets/registration/vendor/font-awesome-4.7/css/font-awesome.min.css";
+import "./assets/registration/vendor/mdi-font/css/material-design-iconic-font.css";
+import "./assets/registration/vendor/mdi-font/css/material-design-iconic-font.min.css";
+
+/*CSS REGISTRATION END*/
 
 
 
