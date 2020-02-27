@@ -25,54 +25,70 @@
 
 
 
-import React  from 'react';
-import { bindActionCreators } from "redux";
-import { connect } from 'react-redux';
+// import React  from 'react';
+// import { bindActionCreators } from "redux";
+// import { connect } from 'react-redux';
+//
+// import {requestUserApiData} from "./store/actions/user";
+// import Blog from './pages/blog/Blog'
+//
+//
+// class App extends React.Component {
+//
+//
+//
+//     componentDidMount() {
+//         this.props.requestUserApiData();
+//     }
+//
+//
+//
+//
+//     render() {
+//         // const { results  = []} = this.props.data;
+//         // console.log(results,"47451745745854")
+//         // console.log(this.props.data.user,"asdlkjashgjks")
+//         const data = this.props.data.user;
+//         console.log(data, "user user user");
+//         console.log(this.props.data,88888888)
+//
+//         return (
+//             <div>
+//                 <Blog />
+//                 <h1>
+//                    <button onClick={this.handelClick}>Click</button>
+//                 </h1>
+//             </div>
+//         );
+//     }
+// }
+//
+// const mapStateToProps = state => ({data: state.user });
+//
+// const mapDispatchToProps = dispatch =>
+//     bindActionCreators({requestUserApiData}, dispatch);
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-import {requestUserApiData} from "./store/actions/user";
-import Blog from './pages/blog/Blog'
 
+import React, {Component} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Home from './pages/Home'
+import Blog from './pages/Blog'
 
-class App extends React.Component {
-
-
-
-    componentDidMount() {
-        this.props.requestUserApiData();
-    }
-
-    // handelClick = () => {
-    //     // const data = this.props.data.user
-    //     for (let i = 0; i < this.props.data.user.length; i++) {
-    //         // Iterate over numeric indexes from 0 to 5, as everyone expects.
-    //         console.log();
-    //     }
-    // }
-
-
+class App extends Component {
     render() {
-        // const { results  = []} = this.props.data;
-        // console.log(results,"47451745745854")
-        // console.log(this.props.data.user,"asdlkjashgjks")
-        const data = this.props.data.user;
-        console.log(data, "user user user");
-        console.log(this.props.data,88888888)
-
         return (
             <div>
-                <Blog />
-                <h1>
-                   <button onClick={this.handelClick}>Click</button>
-                </h1>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" component={Home} />
+                        <Route path="/blog" component={Blog} />
+                    </Switch>
+                </BrowserRouter>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({data: state.user });
-
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({requestUserApiData}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
+export default App;

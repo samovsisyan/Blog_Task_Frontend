@@ -1,14 +1,29 @@
+
 import React, {Component} from 'react';
-import Wrapper from "../components/Wrapper"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import App from "../App";
+
 
 class Home extends Component {
+
     render() {
+
+
         return (
             <div>
-                <h1>Home</h1>
+                <Header />
+                    <div className="background_home_section">
+                        <div className="home_page_css">
+                            <h1> Practical work by gHost</h1>
+                        </div>
+                    </div>
+
+                <Footer />
             </div>
-        );
+        )
     }
 }
 
 export default Home;
+

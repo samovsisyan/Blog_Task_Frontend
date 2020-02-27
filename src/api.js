@@ -30,25 +30,25 @@
 
 export const fetchData  = async () => {
     try{
-        const response = await fetch("http://localhost:5000/users");
+        const response = await fetch("http://localhost:8000/users");
         console.log(response, "user");
         const data = await response.json();
         return data;
     }catch (e) {
         console.log(e)
     }
-}
+};
 
 
 
 export const fetchBlogData  = async () => {
     try{
-        const response = await fetch("http://localhost:5000/blogs");
+        const response = await fetch("http://localhost:8000/blog");
         console.log(response, "blog");
         const data = await response.json();
         return data;
     }catch (e) {
         console.log(e)
     }
-}
+};
 
