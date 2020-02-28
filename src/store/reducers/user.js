@@ -6,6 +6,6 @@ export default (state = {}, {type, data}) => {
         case RECEIVE_USER_API_DATA:
             return data;
         default:
-          return state;
+            return state;
     }
 }

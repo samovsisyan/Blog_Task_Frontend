@@ -3,15 +3,26 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import { requestBlogApiData } from '../../store/actions/blog';
+
 class Blog extends Component {
+
+    componentDidMount() {
+        this.props.requestBlogApiData();
+    }
+
     render() {
+
+        console.log(this.props.data,111);
         return (
             <div data-spy="scroll" data-target=".site-navbar-target" data-offset="300" data-aos-easing="slide"
                  data-aos-duration="800" data-aos-delay="0">
                 <Header/>
                 <div className="project_blog ">
                     <div className="blog_background">
-                        <div class="site-wrap">
+                        <div className="site-wrap">
                             <div className="site-section">
                                 <div className="container">
                                     <div className="section-title">
@@ -58,4 +69,11 @@ class Blog extends Component {
     }
 }
 
-export default Blog;
+// export default Blog;
+const mapStateToProps = state => ({data: state.blog });
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({requestBlogApiData}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blog);
+

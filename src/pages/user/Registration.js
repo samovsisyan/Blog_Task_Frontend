@@ -17,7 +17,7 @@ class Registration extends Component {
                                         <div className="name">User Name</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="text" name="username" placeholder="User Name"/>                                            </div>
+                                                <input className="input--style-5" type="text" name="username" placeholder="username"/>                                            </div>
                                         </div>
                                     </div>
 
@@ -25,7 +25,7 @@ class Registration extends Component {
                                         <div className="name">Password</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="text" name="password" placeholder="Password"/>                                            </div>
+                                                <input className="input--style-5" type="text" name="password" placeholder="password"/>                                            </div>
                                         </div>
                                     </div>
 
@@ -33,7 +33,7 @@ class Registration extends Component {
                                         <div className="name">Email</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="email" name="email" placeholder="Email"/>
+                                                <input className="input--style-5" type="email" name="email" placeholder="email  "/>
                                             </div>
                                         </div>
                                     </div>
