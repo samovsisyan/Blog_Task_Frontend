@@ -9,3 +9,16 @@ export const requestBlogApiData = () => ({
 export const receiveBlogApiData = data => ({
     type: RECEIVE_BLOG_API_DATA, data
 });
+
+
+// export const BLOG_REQUEST = 'BLOG_REQUEST';
+// export const BLOG_SUCCESS = 'BLOG_SUCCESS';
+// export const BLOG_FAIL = 'BLOG_FAIL';
+//
+//
+// export function fetchBlog() {
+//     return {
+//         type: BLOG_REQUEST, payload: {},
+//     };
+//     console.log(1545154154)
+// }

@@ -44,8 +44,10 @@ export const fetchData  = async () => {
 export const fetchBlogData  = async () => {
     try{
         const response = await fetch("http://localhost:8000/blog");
-        console.log(response, "blog");
+        console.log("response", response);
         const data = await response.json();
+        console.log("response_data", data)
+
         return data;
     }catch (e) {
         console.log(e)
