@@ -78,6 +78,7 @@ import Contact from './pages/Contact'
 import Blog from "./pages/blog/Blog";
 import Login from "./pages/user/Login";
 import Registration from "./pages/user/Registration";
+import Details from "./pages/blog/Details";
 
 class App extends Component {
     render() {
@@ -90,6 +91,7 @@ class App extends Component {
                         <Route path="/blog" component={Blog} />
                         <Route path="/user/login" component={Login} />
                         <Route path="/user/signup" component={Registration} />
+                        <Route path="/details" component={Details} />
                     </Switch>
                 </BrowserRouter>
             </div>
