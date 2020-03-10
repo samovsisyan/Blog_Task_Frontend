@@ -131,3 +131,19 @@ export const fetchUserData = async () => {
 };
 
 
+export function fetchUserDataCreate(data) {
+    console.log("AXIOS USER data", data)
+    return axios.post("http://localhost:8000/users", {
+        username: data.username,
+        password: data.password,
+        email: data.email,
+        role: data.role,
+        img: data.img,
+    }).then(function (response) {
+        console.log(response);
+    })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
