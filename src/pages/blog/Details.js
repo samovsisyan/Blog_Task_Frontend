@@ -220,6 +220,7 @@ import Header from "../../components/Header";
 import {Link} from "react-router-dom";
 import {fetchComments} from "../../store/actions/comments";
 import {fetchCommentsCreate} from "../../store/actions/comments_create";
+import {fetchUser} from "../../store/actions/user";
 
 
 // import {bindActionCreators} from "redux";
@@ -241,6 +242,7 @@ class Details extends Component {
         this.props.fetchBlog();
         this.props.fetchComments();
         this.props.fetchCommentsCreate();
+        this.props.fetchUser();
 
     }
 
@@ -262,6 +264,9 @@ class Details extends Component {
 
 
     render() {
+        const user = this.props.user;
+        console.log("user user user user user ", user)
+
         const comments = this.props.comments;
         console.log("DETAILS COMMENTS", comments);
 
@@ -411,7 +416,8 @@ const mapStateToProps = (state, ownProps) => {
 
     return {
         blog: state.blog.list.find(blog => blog.id == id),
-        comments: state.comments.comment
+        comments: state.comments.comment,
+        user: state.user.userData,
     }
 };
 
@@ -420,6 +426,7 @@ const mapDispatchToProps = {
     fetchBlog,
     fetchComments,
     fetchCommentsCreate,
+    fetchUser,
 };
 
 

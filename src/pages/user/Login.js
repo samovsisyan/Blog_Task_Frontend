@@ -13,19 +13,20 @@ class Login extends Component {
 
 
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state)
+    };
+
     handleChange = (e) => {
         this.setState({
-            username: e.target.value,
-            password: e.target.value,
+            [e.target.name]: e.target.value,
         });
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e);
-        // this.props.registrationPeople(this.state);
-        console.log(this.state)
-    };
+    handleClick = () => {
+        this.props.fetchCommentsCreate(this.state);
+    }
 
 
     handleClick = () => {

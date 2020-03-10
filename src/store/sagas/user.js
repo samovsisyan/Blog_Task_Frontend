@@ -36,21 +36,51 @@
 
 
 
-import { call, put, takeLatest } from 'redux-saga/effects';
+// import { call, put, takeLatest } from 'redux-saga/effects';
+//
+// import { REQUEST_USER_API_DATA, receiveUserApiData } from "../actions/user";
+// import { fetchData } from '../../api';
+//
+// function* getUserApiData(action) {
+//     try{
+//         const data = yield call(fetchData);
+//         yield put(receiveUserApiData(data));
+//     }catch (e) {
+//         console.log(e)
+//     }
+// }
+//
+//
+// export default function* mySaga() {
+//     yield takeLatest(REQUEST_USER_API_DATA, getUserApiData);
+// }
 
-import { REQUEST_USER_API_DATA, receiveUserApiData } from "../actions/user";
-import { fetchData } from '../../api';
 
-function* getUserApiData(action) {
-    try{
-        const data = yield call(fetchData);
-        yield put(receiveUserApiData(data));
-    }catch (e) {
-        console.log(e)
+import {takeLatest, call, put} from 'redux-saga/effects';
+import {USER_REQUEST, USER_SUCCESS, USER_FAIL} from '../actions/user';
+import * as api from '../../api';
+
+function* handleUserRequest() {
+    try {
+        const data = yield call(api.fetchUserData);
+        yield put({
+            type: USER_SUCCESS,
+            payload: {users: data.users},
+        });
+
+    } catch (e) {
+        console.log(e);
+        yield put({
+            type: USER_FAIL,
+            message: e.message,
+        });
     }
 }
 
 
-export default function* mySaga() {
-    yield takeLatest(REQUEST_USER_API_DATA, getUserApiData);
+
+
+export default function* watchers() {
+    yield takeLatest(USER_REQUEST, handleUserRequest);
+
 }

@@ -114,7 +114,20 @@ export function fetchCommentsDataCreate(data) {
     })
         .catch(function (error) {
             console.log(error);
-        });;
+        });
 }
+
+
+export const fetchUserData = async () => {
+    try {
+        const response = await fetch("http://localhost:8000/users");
+        const data = await response.json();
+        console.log("user user user API", data)
+
+        return data;
+    } catch (e) {
+        console.log(e)
+    }
+};
 
 
