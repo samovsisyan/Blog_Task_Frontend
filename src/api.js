@@ -28,8 +28,12 @@
 // }
 //
 
+import {stringify as qs} from 'querystringify';
+
+
 export const fetchData  = async () => {
     try{
+
         const response = await fetch("http://localhost:8000/users");
         console.log(response, "user");
         const data = await response.json();
@@ -51,4 +55,51 @@ export const fetchBlogData  = async () => {
         console.log(e)
     }
 };
+
+
+export const fetchBlogDetailsId  = async (id) => {
+    try{
+        const response = await fetch(`http://localhost:8000/blog/details/${id}`);
+        console.log("response", response)
+        const data = await response.json();
+        console.log("DATA RESPONS", data)
+        return data;
+    }catch (e) {
+        console.log(e)
+    }
+};
+
+
+
+export const fetchCommentsData = async () => {
+    try{
+       const response = await fetch("http://localhost:8000/comments");
+        console.log("Comments response", response);
+        const data = await response.json();
+        console.log("COMMETNTS DATA RESPONS", data);
+
+        return data;
+
+    }catch (e) {
+        console.log(e)
+    }
+};
+
+
+export const fetchCommentsDataCreate = async (name,description,user_id,blog_id) => {
+    try{
+        const create = qs(name,description,user_id,blog_id);
+
+        const response = await fetch(`http://localhost:8000/comments/${create}`);
+        console.log("Comments Create response", response);
+        const data = await response.json();
+        console.log("COMMETNTS CTEARE DATA RESPONS", data);
+
+        return data;
+
+    }catch (e) {
+        console.log(e)
+    }
+}
+
 

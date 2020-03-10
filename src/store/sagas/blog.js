@@ -31,7 +31,7 @@ function* handleBlogRequest() {
         });
 
     } catch (e) {
-        console.log(e, 95);
+        console.log(e);
         yield put({
             type: BLOG_FAIL,
             message: e.message,
@@ -39,6 +39,10 @@ function* handleBlogRequest() {
     }
 }
 
+
+
+
 export default function* watchers() {
     yield takeLatest(BLOG_REQUEST, handleBlogRequest);
+
 }

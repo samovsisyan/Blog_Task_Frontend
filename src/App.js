@@ -79,6 +79,8 @@ import Blog from "./pages/blog/Blog";
 import Login from "./pages/user/Login";
 import Registration from "./pages/user/Registration";
 import Details from "./pages/blog/Details";
+import Bloging from "./pages/Bloging";
+// import Lang from "./Lang";
 
 class App extends Component {
     render() {
@@ -91,7 +93,9 @@ class App extends Component {
                         <Route path="/blog" component={Blog} />
                         <Route path="/user/login" component={Login} />
                         <Route path="/user/signup" component={Registration} />
-                        <Route path="/details" component={Details} />
+                        <Route path="/details/:post_id" component={Details} />
+                        <Route path="/bloging" component={Bloging} />
+                        {/*<Route path="/lang" component={Lang} />*/}
                     </Switch>
                 </BrowserRouter>
             </div>
@@ -100,3 +104,50 @@ class App extends Component {
 }
 
 export default App;
+
+
+// import React, {Component, Fragment} from 'react';
+// import Blog from "./blog";
+// import {BrowserRouter, Route, Link} from "react-router-dom";
+// class App extends Component {
+//     state = {
+//             blog: [],
+//         };
+//
+//
+//
+//    async componentDidMount() {
+//        const response = await fetch("http://localhost:8000/blog");
+//        const blog = await response.json();
+//        this.setState({blog})
+//
+//
+//    }
+//
+//
+//     render() {
+//         const {blog} = this.state
+//         return (
+//             <BrowserRouter>
+//                 <Fragment>
+//                     <ul>
+//                         <li>
+//                             <Link to="/">Home</Link>
+//                         </li>
+//
+//                         <li>
+//                             <Link to="/blog">Blog</Link>
+//                         </li>
+//                     </ul>
+//
+//                     <Route exact path="/" render={() => <div>Home</div>}/>
+//                     <Route  path="/blog" render={
+//                         props => <Blog {...props} blog={blog} />
+//                     } />
+//                 </Fragment>
+//             </BrowserRouter>
+//         );
+//     }
+// }
+//
+// export default App;

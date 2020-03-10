@@ -11,10 +11,11 @@
 // }
 
 
-import {BLOG_REQUEST, BLOG_SUCCESS} from '../actions/blog';
+import {BLOG_REQUEST, BLOG_SUCCESS, } from '../actions/blog';
 
 const initialState = {
     list: [],
+
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +29,7 @@ export default function reducer(state = initialState, action) {
                 list: action.payload.blog,
             };
         }
+
 
         default: {
             return state;
