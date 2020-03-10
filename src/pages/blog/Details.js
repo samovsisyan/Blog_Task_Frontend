@@ -212,16 +212,14 @@
 // )(Details)
 
 
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchBlog} from "../../store/actions/blog";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import {Link} from "react-router-dom";
-import {fetchComments, fetchCommentsCreate} from "../../store/actions/comments";
-
-
+import {fetchComments} from "../../store/actions/comments";
+import {fetchCommentsCreate} from "../../store/actions/comments_create";
 
 
 // import {bindActionCreators} from "redux";
@@ -229,11 +227,6 @@ import {fetchComments, fetchCommentsCreate} from "../../store/actions/comments";
 
 
 class Details extends Component {
-    componentDidMount() {
-        this.props.fetchBlog();
-        this.props.fetchComments();
-        this.props.fetchCommentsCreate();
-    }
     constructor(props) {
         super(props);
         this.state = {
@@ -243,6 +236,14 @@ class Details extends Component {
             blog_id: "",
         }
     }
+
+    componentDidMount() {
+        this.props.fetchBlog();
+        this.props.fetchComments();
+        this.props.fetchCommentsCreate();
+
+    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -265,8 +266,7 @@ class Details extends Component {
         console.log("DETAILS COMMENTS", comments);
 
 
-
-        console.log("this.props.blog",this.props.blog);
+        console.log("this.props.blog", this.props.blog);
         console.log("this.state", this.state);
 
 
@@ -307,8 +307,6 @@ class Details extends Component {
                                         </div>
 
 
-
-
                                         <div className="pt-5">
                                             <div className="section-title">
                                                 <h2 className="mb-5">{comments.length} Comments</h2>
@@ -316,11 +314,11 @@ class Details extends Component {
                                             {comments.map((comment) => (
 
                                                 <ul className="comment-list">
-                                                <li className="comment">
-                                                    <div className="vcard bio">
-                                                        <img src="/images/person_1.jpg"/>
-                                                    </div>
-                                                    <div className="comment-body">
+                                                    <li className="comment">
+                                                        <div className="vcard bio">
+                                                            <img src="/images/person_1.jpg"/>
+                                                        </div>
+                                                        <div className="comment-body">
                                                             <div>
                                                                 <h3>{comment.name}</h3>
                                                                 <div className="meta">January 9, 2018 at 2:21pm</div>
@@ -328,63 +326,63 @@ class Details extends Component {
                                                                 <p>{comment.description}</p>
                                                             </div>
 
-                                                    </div>
+                                                        </div>
 
-                                                </li>
+                                                    </li>
 
-                                            </ul>
+                                                </ul>
                                             ))}
 
                                             <div className="comment-form-wrap pt-5">
-                                            <div className="section-title">
-                                                <h2 className="mb-5">Leave a comment</h2>
+                                                <div className="section-title">
+                                                    <h2 className="mb-5">Leave a comment</h2>
+                                                </div>
+
+                                                <form onSubmit={this.handleSubmit} className="p-5 bg-light">
+                                                    <div className="form-group">
+                                                        <label htmlFor="name">Name *</label>
+                                                        <input
+                                                            name="name"
+                                                            placeholder="name"
+                                                            onChange={e => this.handleChange(e)}
+                                                            value={this.state.name}
+                                                            className="form-control"
+                                                            id="name"
+                                                            type="text"/>
+
+
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label htmlFor="message">Message</label>
+                                                        <textarea
+                                                            name="description"
+                                                            placeholder="description"
+                                                            onChange={e => this.handleChange(e)}
+                                                            value={this.state.description}
+                                                            cols="30"
+                                                            rows="10"
+                                                            className="form-control"
+                                                            type="text"/>
+
+                                                        <input
+                                                            type="hidden"
+                                                            name="blog_id"
+                                                            onChange={e => this.handleChange(e)}
+                                                            value={this.state.blog_id = this.props.blog.id}
+                                                        />
+                                                        <input type="hidden"
+                                                               name="user_id"
+                                                               onChange={e => this.handleChange(e)}
+                                                               value={this.state.user_id = 1}
+                                                        />
+
+
+                                                        <button onClick={this.handleClick}>Comments</button>
+
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <form onSubmit={this.handleSubmit} className="p-5 bg-light">
-                                                <div className="form-group">
-                                                    <label htmlFor="name">Name *</label>
-                                                    <input
-                                                        name="name"
-                                                        placeholder="name"
-                                                        onChange={e => this.handleChange(e)}
-                                                        value={this.state.name}
-                                                        className="form-control"
-                                                        id="name"
-                                                        type="text"/>
-
-
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="message">Message</label>
-                                                    <textarea
-                                                        name="description"
-                                                        placeholder="description"
-                                                        onChange={e => this.handleChange(e)}
-                                                        value={this.state.description}
-                                                        cols="30"
-                                                        rows="10"
-                                                        className="form-control"
-                                                        type="text"/>
-
-                                                    <input
-                                                        type="hidden"
-                                                        name="blog_id"
-                                                        onChange={e => this.handleChange(e)}
-                                                        value={this.state.blog_id = this.props.blog.id}
-                                                    />
-                                                    <input type="hidden" name="user_id" value="1"/>
-
-
-                                                    <button onClick={this.handleClick}>Comments</button>
-
-                                                </div>
-                                            </form>
                                         </div>
-                                        </div>
-
-
-
-
 
 
                                     </div>
@@ -400,8 +398,8 @@ class Details extends Component {
 
         return (
             <div>
-                <Header />
-                    {blog}
+                <Header/>
+                {blog}
                 <Footer/>
             </div>
         )
@@ -412,8 +410,8 @@ const mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.post_id;
 
     return {
-            blog: state.blog.list.find(blog => blog.id == id),
-            comments: state.comments.comment
+        blog: state.blog.list.find(blog => blog.id == id),
+        comments: state.comments.comment
     }
 };
 
@@ -428,4 +426,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Details)
+)(Details);

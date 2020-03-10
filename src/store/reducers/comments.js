@@ -1,8 +1,8 @@
-import { COMMENTS_REQUEST, COMMENTS_SUCCESS, COMMENTS_CREATE_REQUEST, COMMENTS_CREATE_SUCCESS, COMMENTS_CREATE_FAIL} from '../actions/comments';
+import { COMMENTS_REQUEST,
+    COMMENTS_SUCCESS,} from '../actions/comments';
 
 const initialState = {
     comment: [],
-    comment_create: [],
 
 };
 
@@ -19,33 +19,6 @@ export default function reducer(state = initialState, action) {
             };
 
         }
-
-
-
-
-        case COMMENTS_CREATE_REQUEST: {
-            return {
-                ...state,
-                comment_create: [],
-            };
-        }
-        case COMMENTS_CREATE_SUCCESS: {
-            const {name,description,user_id,blog_id} = action.payload.data;
-            return {
-                ...state,
-                name,
-                description,
-                user_id,
-                blog_id
-            };
-        }
-        case COMMENTS_CREATE_FAIL: {
-            return {
-                ...state,
-                comment_create: [],
-            };
-        }
-
 
         default: {
             return state;
