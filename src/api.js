@@ -29,7 +29,7 @@
 //
 
 import { stringify as qs } from 'querystringify';
-import {AxiosInstance as axios} from "axios";
+import axios from "axios";
 
 
 export const fetchData = async () => {
@@ -85,51 +85,36 @@ export const fetchCommentsData = async () => {
 };
 
 
-export const fetchCommentsDataCreate = async ( name, description, user_id, blog_id ) => {
-    try{
-        const create = qs( name, description, user_id, blog_id );
-
-        const response = await fetch(`http://localhost:8000/comments/create?${create}`);
-        console.log("Comments Create response", response);
-        const data = await response.json();
-        console.log("COMMETNTS CTEARE DATA RESPONS", data);
-
-        return data;
-
-    }catch (e) {
-        console.log(e)
-    }
-}
-
-
-// export const fetchCommentsDataCreate = async (name, description, user_id, blog_id) => {
-//     try {
-//         // const create = qs(name, description, user_id, blog_id);
-//         //
-//         // const response = await axios.post(`http://localhost:8000/comments/create/${create}`);
-//         // console.log("Comments Create response", response);
-//         //
-//         // const data = await response.json();
-//         // console.log("COMMETNTS CTEARE DATA RESPONS", data);
-//         //
-//         // return data;
+// export const fetchCommentsDataCreate = async ( name, description, user_id, blog_id ) => {
+//     try{
+//         const create = qs( name, description, user_id, blog_id );
 //
+//         const response = await fetch(`http://localhost:8000/comments/create/${create}`);
+//         console.log("Comments Create response", response);
+//         const data = await response.json();
+//         console.log("COMMETNTS CTEARE DATA RESPONS", data);
 //
-//         axios.put(`http://localhost:8000/comments/create/`, {
-//             name: 'asdasd',
-//             description: 'Fliasdsadntstone',
-//             user_id: "1",
-//             blog_id:  "3"
-//         })
-//             .then(function (response) {
-//                 console.log(response);
-//             })
-//             .catch(function (error) {
-//                 console.log(error);
-//             });
+//         return data;
 //
-//     } catch (error) {
-//         console.error(error);
+//     }catch (e) {
+//         console.log(e)
 //     }
 // }
+
+
+export function fetchCommentsDataCreate(data) {
+    console.log("AXIOS data", data)
+    return axios.post("http://localhost:8000/comments/create", {
+        name: data.name,
+        description: data.description,
+        user_id: data.user_id,
+        blog_id: data.blog_id,
+    }).then(function (response) {
+        console.log(response);
+    })
+        .catch(function (error) {
+            console.log(error);
+        });;
+}
+
 
