@@ -30,24 +30,20 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
-        const token  = this.props.token
-        localStorage.setItem('myValueInLocalStorage', token);
 
     };
 
     handleClick = () => {
         this.props.fetchLogin(this.state);
-        this.setState({token: this.props.token})
 
     }
 
 
-
-
     render() {
-        const data  = this.props.token;
-        console.log("this.props.userrrrrrr", data);
+        const token  = this.props.token;
+        console.log("this.props.token", token);
         console.log(this.state);
+        localStorage.setItem('Token', this.props.token);
 
         return (
             <div>
