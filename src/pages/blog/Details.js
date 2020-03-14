@@ -265,7 +265,7 @@ class Details extends Component {
 
     render() {
         const user = this.props.user;
-        console.log("user user user user user ", user)
+        console.log("user user user user user ", user);
 
         const comments = this.props.comments;
         console.log("DETAILS COMMENTS", comments);

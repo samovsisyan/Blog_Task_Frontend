@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {fetchBlog} from "../../store/actions/blog";
-import {fetchComments} from "../../store/actions/comments";
-import {fetchCommentsCreate} from "../../store/actions/comments_create";
+import {fetchUserCreate} from "../../store/actions/user_create";
+import {fetchUser} from "../../store/actions/user";
+import {fetchRegister} from "../../store/actions/register";
 
 class Registration extends Component {
     constructor(props) {
         super(props);
-        this.props = {
+        this.state = {
             username: "",
             password: "",
             email: "",
+            role: "",
             img: ""
         }
+    }
+
+    componentDidMount() {
+        // this.props.fetchUserCreate();
+        this.props.fetchUser();
+        this.props.fetchRegister();
     }
 
     handleSubmit = (e) => {
@@ -27,11 +34,14 @@ class Registration extends Component {
     };
 
     handleClick = () => {
-        this.props.fetchCommentsCreate(this.state);
+        // this.props.fetchUserCreate(this.state);
+        this.props.fetchRegister(this.state);
     }
 
 
     render() {
+        console.log(this.state);
+        console.log("this.props.user", this.props.user)
         return (
             <div>
                 <div className="page-wrapper bg-gra-03 p-t-45 p-b-50">
@@ -41,13 +51,21 @@ class Registration extends Component {
                                 <h2 className="title">Event Registration Form</h2>
                             </div>
                             <div className="card-body">
-                                <form method="POST">
+                                <form onSubmit={this.handleSubmit} method="POST">
 
                                     <div className="form-row">
                                         <div className="name">User Name</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="text" name="username" placeholder="username"/>                                            </div>
+                                                <input
+                                                    className="input--style-5"
+                                                    type="text"
+                                                    name="username"
+                                                    placeholder="username"
+                                                    onChange={e => this.handleChange(e)}
+                                                    value={this.state.username}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -55,7 +73,15 @@ class Registration extends Component {
                                         <div className="name">Password</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="text" name="password" placeholder="password"/>                                            </div>
+                                                <input
+                                                    className="input--style-5"
+                                                    type="text"
+                                                    name="password"
+                                                    placeholder="password"
+                                                    onChange={e => this.handleChange(e)}
+                                                    value={this.state.password}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -63,7 +89,30 @@ class Registration extends Component {
                                         <div className="name">Email</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="email" name="email" placeholder="email  "/>
+                                                <input
+                                                    className="input--style-5"
+                                                    type="email"
+                                                    name="email"
+                                                    placeholder="email"
+                                                    onChange={e => this.handleChange(e)}
+                                                    value={this.state.email}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="name">Role</div>
+                                        <div className="value">
+                                            <div className="input-group">
+                                                <input
+                                                    className="input--style-5"
+                                                    type="role"
+                                                    name="role"
+                                                    placeholder="role"
+                                                    onChange={e => this.handleChange(e)}
+                                                    value={this.state.role = "user"}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -72,14 +121,23 @@ class Registration extends Component {
                                         <div className="name">Img</div>
                                         <div className="value">
                                             <div className="input-group">
-                                                <input className="input--style-5" type="img" name="img" placeholder="img  "/>
+                                                <input
+                                                    className="input--style-5"
+                                                    type="img"
+                                                    name="img"
+                                                    placeholder="img"
+                                                    onChange={e => this.handleChange(e)}
+                                                    value={this.state.img}
+                                                />
                                             </div>
                                         </div>
                                     </div>
 
 
+
+
                                     <div>
-                                        <button className="btn btn--radius-2 btn--red" type="submit">Register
+                                        <button onClick={this.handleClick} className="btn btn--radius-2 btn--red" type="submit">Register
                                         </button>
                                     </div>
                                 </form>
@@ -94,13 +152,16 @@ class Registration extends Component {
 }
 
 // export default Registration;
-const mapStateToProps = state => {
-
-};
+const mapStateToProps = (state) => ({
+    user: state.user.userData,
+    register: state.register.register,
+});
 
 
 const mapDispatchToProps = {
-
+    fetchUserCreate,
+    fetchUser,
+    fetchRegister
 };
 
 

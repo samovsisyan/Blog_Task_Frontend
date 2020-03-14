@@ -132,8 +132,7 @@ export const fetchUserData = async () => {
 
 
 export function fetchUserDataCreate(data) {
-    console.log("AXIOS USER data", data)
-    return axios.post("http://localhost:8000/users", {
+    return axios.post("http://localhost:8000/users/create", {
         username: data.username,
         password: data.password,
         email: data.email,
@@ -141,6 +140,38 @@ export function fetchUserDataCreate(data) {
         img: data.img,
     }).then(function (response) {
         console.log(response);
+    })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+export function fetchRegisterData(data) {
+    return axios.post("http://localhost:8000/user/login/register", {
+        username: data.username,
+        password: data.password,
+        email: data.email,
+        role: data.role,
+        img: data.img,
+    }).then(function (response) {
+        console.log(response);
+    })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+export function fetchLoginData (data)  {
+        return axios.post("http://localhost:8000/user/login/login", {
+        username: data.username,
+        password: data.password,
+
+    }).then(function (response) {
+            const data = response.data;
+        // console.log("datadatadatadatadata", data);
+        return data
     })
         .catch(function (error) {
             console.log(error);

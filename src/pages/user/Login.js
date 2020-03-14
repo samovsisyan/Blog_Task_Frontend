@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {fetchLogin} from "../../store/actions/login";
+
 
 class Login extends Component {
+    componentDidMount() {
+        this.props.fetchLogin();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
             username: "",
             password: "",
+            token: "",
         }
     }
 
@@ -22,19 +30,24 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
+        const token  = this.props.token
+        localStorage.setItem('myValueInLocalStorage', token);
+
     };
 
     handleClick = () => {
-        this.props.fetchCommentsCreate(this.state);
+        this.props.fetchLogin(this.state);
+        this.setState({token: this.props.token})
+
     }
 
 
-    handleClick = () => {
 
-    };
 
     render() {
-        console.log(this.state)
+        const data  = this.props.token;
+        console.log("this.props.userrrrrrr", data);
+        console.log(this.state);
 
         return (
             <div>
@@ -51,8 +64,14 @@ John Doe
 </span>
                                 <div className="wrap-input100 validate-input m-b-10"
                                      data-validate="Username is required">
-                                    <input onChange={this.handleChange} className="input100" type="text" required name="username"
-                                           placeholder="Username"/>
+                                    <input
+                                        className="input100"
+                                        type="text"
+                                        required name="username"
+                                        placeholder="Username"
+                                        onChange={e => this.handleChange(e)}
+                                        value={this.state.username}
+                                    />
                                     <span className="focus-input100"></span>
                                     <span className="symbol-input100">
 <i className="fa fa-user"></i>
@@ -60,15 +79,23 @@ John Doe
                                 </div>
                                 <div className="wrap-input100 validate-input m-b-10"
                                      data-validate="Password is required">
-                                    <input onChange={this.handleChange} className="input100" type="password" required name="password"
-                                           placeholder="Password"/>
+                                    <input
+                                        className="input100"
+                                        type="password"
+                                        required name="password"
+                                        placeholder="Password"
+                                        onChange={e => this.handleChange(e)}
+                                        value={this.state.password}
+                                    />
                                     <span className="focus-input100"></span>
                                     <span className="symbol-input100">
 <i className="fa fa-lock"></i>
 </span>
                                 </div>
                                 <div className="container-login100-form-btn p-t-10">
-                                    <button className="login100-form-btn">
+                                    <button
+                                        onClick={this.handleClick}
+                                        className="login100-form-btn">
                                         Sign In
                                     </button>
                                 </div>
@@ -100,4 +127,19 @@ John Doe
     }
 }
 
-export default Login;
+// export default Login;
+const mapStateToProps = state => ({
+
+    token: state.login.token
+});
+
+const mapDispatchToProps = {
+    fetchLogin,
+};
+
+const Container = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Login);
+
+export default Container;

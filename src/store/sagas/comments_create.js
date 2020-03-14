@@ -20,9 +20,6 @@ function* handleCommentsCreateRequest(action) {
     }
 }
 
-
-
-
 export default function* watchers() {
     yield takeLatest(COMMENTS_CREATE_REQUEST, handleCommentsCreateRequest);
 
