@@ -109,6 +109,7 @@ export function fetchCommentsDataCreate(data) {
         description: data.description,
         user_id: data.user_id,
         blog_id: data.blog_id,
+        x_access_token: data.x_access_token
     }).then(function (response) {
         console.log(response);
     })

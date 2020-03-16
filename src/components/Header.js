@@ -2,10 +2,17 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 class Header extends Component {
+
+    handleClick = () => {
+        localStorage.clear();
+    };
+
     render() {
+
+        const getItem = localStorage.getItem('Token');
+        console.log("local", getItem)
         return (
             <div>
-
                 <div className="project_blog">
                     <div className="header_background">
                         <div className="blog_img_logo">
@@ -20,13 +27,12 @@ class Header extends Component {
                             <Link to="/contact">Contact</Link>
 
                             <Link to="/user/signup">Sign Up</Link>
-
-                            <Link to="/user/login">Sign In</Link>
-
+                            {getItem ?
+                            <Link onClick={this.handleClick} to="/user/login">Log Out</Link>
+                            : <Link to="/user/login">Sign In</Link>}
                         </div>
                     </div>
                 </div>
-
             </div>
         );
     }

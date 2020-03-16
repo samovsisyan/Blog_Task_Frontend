@@ -221,6 +221,7 @@ import {Link} from "react-router-dom";
 import {fetchComments} from "../../store/actions/comments";
 import {fetchCommentsCreate} from "../../store/actions/comments_create";
 import {fetchUser} from "../../store/actions/user";
+import {fetchLogin} from "../../store/actions/login";
 
 
 // import {bindActionCreators} from "redux";
@@ -235,6 +236,7 @@ class Details extends Component {
             description: "",
             user_id: "",
             blog_id: "",
+            x_access_token: this.props.token
         }
     }
 
@@ -243,6 +245,7 @@ class Details extends Component {
         this.props.fetchComments();
         this.props.fetchCommentsCreate();
         this.props.fetchUser();
+        this.props.fetchLogin();
 
     }
 
@@ -264,6 +267,9 @@ class Details extends Component {
 
 
     render() {
+        const token = this.props.token;
+        console.log("DETAILS this.props.token", token);
+
         const user = this.props.user;
         console.log("user user user user user ", user);
 
@@ -273,7 +279,8 @@ class Details extends Component {
 
         console.log("this.props.blog", this.props.blog);
         console.log("this.state", this.state);
-
+        const getItem = localStorage.getItem('Token');
+        console.log("local", getItem)
 
         const blog = this.props.blog ? (
             <div className="post">
@@ -337,7 +344,7 @@ class Details extends Component {
 
                                                 </ul>
                                             ))}
-
+                                            {getItem ?
                                             <div className="comment-form-wrap pt-5">
                                                 <div className="section-title">
                                                     <h2 className="mb-5">Leave a comment</h2>
@@ -387,6 +394,7 @@ class Details extends Component {
                                                     </div>
                                                 </form>
                                             </div>
+                                            : <div></div>}
                                         </div>
 
 
@@ -418,6 +426,8 @@ const mapStateToProps = (state, ownProps) => {
         blog: state.blog.list.find(blog => blog.id == id),
         comments: state.comments.comment,
         user: state.user.userData,
+        token: state.login.token
+
     }
 };
 
@@ -427,6 +437,8 @@ const mapDispatchToProps = {
     fetchComments,
     fetchCommentsCreate,
     fetchUser,
+    fetchLogin,
+
 };
 
 

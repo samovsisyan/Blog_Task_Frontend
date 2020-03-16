@@ -44,6 +44,9 @@ class Login extends Component {
         console.log("this.props.token", token);
         console.log(this.state);
         localStorage.setItem('Token', this.props.token);
+        const getItem = localStorage.getItem('Token');
+        console.log("local", getItem)
+
 
         return (
             <div>
@@ -89,11 +92,21 @@ John Doe
 </span>
                                 </div>
                                 <div className="container-login100-form-btn p-t-10">
-                                    <button
+                                    {getItem ?
+                                  <Link to='/'>
+                                      <button
                                         onClick={this.handleClick}
                                         className="login100-form-btn">
                                         Sign In
                                     </button>
+                                  </Link>
+                                   : <Link to='/user/login'>
+                                            <button
+                                                onClick={this.handleClick}
+                                                className="login100-form-btn">
+                                                Sign In
+                                            </button>
+                                        </Link> }
                                 </div>
                                 <div className="text-center w-full p-t-25 p-b-230">
                                     <Link to="#" className="txt1">
