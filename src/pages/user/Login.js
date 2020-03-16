@@ -19,8 +19,6 @@ class Login extends Component {
     }
 
 
-
-
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
@@ -40,10 +38,10 @@ class Login extends Component {
 
 
     render() {
-        const token  = this.props.token;
-        console.log("this.props.token", token);
+        const token = this.props.user.token;
+        console.log("LOGIN this.props.token", token);
         console.log(this.state);
-        localStorage.setItem('Token', this.props.token);
+        localStorage.setItem('Token', this.props.user.token);
         const getItem = localStorage.getItem('Token');
         console.log("local", getItem)
 
@@ -54,7 +52,7 @@ class Login extends Component {
                     <div className="container-login100">
                         <div className="wrap-login100 p-t-190 p-b-30">
                             <form onSubmit={this.handleSubmit} className="login100-form validate-form">
-                            {/*<form method="POST" className="login100-form validate-form">*/}
+                                {/*<form method="POST" className="login100-form validate-form">*/}
                                 <div className="login100-form-avatar">
                                     <img src="/images/avatar-01.jpg" alt="AVATAR"/>
                                 </div>
@@ -92,21 +90,21 @@ John Doe
 </span>
                                 </div>
                                 <div className="container-login100-form-btn p-t-10">
-                                    {getItem ?
-                                  <Link to='/'>
-                                      <button
-                                        onClick={this.handleClick}
-                                        className="login100-form-btn">
-                                        Sign In
-                                    </button>
-                                  </Link>
-                                   : <Link to='/user/login'>
+                                        {getItem ?
+                                        <Link to='/'>
                                             <button
                                                 onClick={this.handleClick}
                                                 className="login100-form-btn">
                                                 Sign In
                                             </button>
-                                        </Link> }
+                                        </Link>
+                                        : <Link to='/user/login'>
+                                            <button
+                                                onClick={this.handleClick}
+                                                className="login100-form-btn">
+                                                Sign In
+                                            </button>
+                                        </Link>}
                                 </div>
                                 <div className="text-center w-full p-t-25 p-b-230">
                                     <Link to="#" className="txt1">
@@ -115,14 +113,14 @@ John Doe
                                 </div>
                                 <div className="text-center w-full">
                                     <Link className="txt1" to="#">
-                                    {/*<Link className="txt1" to="/user/signup">*/}
+                                        {/*<Link className="txt1" to="/user/signup">*/}
                                         Create new account
                                         <i className="fa fa-long-arrow-right"></i>
                                     </Link>
                                 </div>
                                 <div className="text-center w-full">
                                     <Link className="txt1" to="#">
-                                    {/*<Link className="txt1" to="/blog">*/}
+                                        {/*<Link className="txt1" to="/blog">*/}
                                         Back Blog
                                         <i className="fa fa-long-arrow-right"></i>
                                     </Link>
@@ -139,7 +137,7 @@ John Doe
 // export default Login;
 const mapStateToProps = state => ({
 
-    token: state.login.token
+    user: state.login.token
 });
 
 const mapDispatchToProps = {

@@ -28,7 +28,7 @@ class Header extends Component {
 
                             <Link to="/user/signup">Sign Up</Link>
                             {getItem ?
-                            <Link onClick={this.handleClick} to="/user/login">Log Out</Link>
+                            <Link onClick={this.handleClick} to="/">Log Out</Link>
                             : <Link to="/user/login">Sign In</Link>}
                         </div>
                     </div>

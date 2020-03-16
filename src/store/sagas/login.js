@@ -9,7 +9,7 @@ function* handleLoginRequest(action) {
         // console.log("LOGIN SAGAS DATA", data.user);
         yield put({
             type: LOGIN_SUCCESS,
-            payload: {user: data.token},
+            payload: {user: data.user},
         });
 
         // console.log("data.user", data.user)

@@ -263,14 +263,14 @@ class Details extends Component {
 
     handleClick = () => {
         this.props.fetchCommentsCreate(this.state);
-    }
+    };
 
 
     render() {
-        const token = this.props.token;
+        const token = this.props.user;
         console.log("DETAILS this.props.token", token);
 
-        const user = this.props.user;
+        const user = this.props.users;
         console.log("user user user user user ", user);
 
         const comments = this.props.comments;
@@ -280,7 +280,7 @@ class Details extends Component {
         console.log("this.props.blog", this.props.blog);
         console.log("this.state", this.state);
         const getItem = localStorage.getItem('Token');
-        console.log("local", getItem)
+        console.log("local", getItem);
 
         const blog = this.props.blog ? (
             <div className="post">
@@ -423,8 +423,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         blog: state.blog.list.find(blog => blog.id == id),
         comments: state.comments.comment,
-        user: state.user.userData,
-        token: state.login.token
+        users: state.user.userData,
+        user: state.login.token
 
     }
 };
