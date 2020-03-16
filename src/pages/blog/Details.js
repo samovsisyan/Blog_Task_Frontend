@@ -217,7 +217,7 @@ import {connect} from 'react-redux'
 import {fetchBlog} from "../../store/actions/blog";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {fetchComments} from "../../store/actions/comments";
 import {fetchCommentsCreate} from "../../store/actions/comments_create";
 import {fetchUser} from "../../store/actions/user";
@@ -388,9 +388,7 @@ class Details extends Component {
                                                                value={this.state.user_id = 1}
                                                         />
 
-
-                                                        <button onClick={this.handleClick}>Comments</button>
-
+                                                        <button onClick={this.handleClick} >Coments</button>
                                                     </div>
                                                 </form>
                                             </div>
