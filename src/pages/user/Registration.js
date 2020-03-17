@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {fetchUserCreate} from "../../store/actions/user_create";
 import {fetchUser} from "../../store/actions/user";
 import {fetchRegister} from "../../store/actions/register";
+import {Link} from "react-router-dom";
 
 class Registration extends Component {
     constructor(props) {
@@ -134,11 +135,12 @@ class Registration extends Component {
                                     </div>
 
 
-
-
                                     <div>
-                                        <button onClick={this.handleClick} className="btn btn--radius-2 btn--red" type="submit">Register
-                                        </button>
+                                        <Link to='/user/login'>
+                                            <button onClick={this.handleClick} className="btn btn--radius-2 btn--red"
+                                                    type="submit">Register
+                                            </button>
+                                        </Link>
                                     </div>
                                 </form>
                             </div>
