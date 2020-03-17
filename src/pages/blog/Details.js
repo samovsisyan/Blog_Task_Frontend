@@ -288,7 +288,8 @@ class Details extends Component {
                     <div className="blog_background">
 
 
-                        <div className="site-section">
+
+                         <div className="site-section">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-8 single-content">
