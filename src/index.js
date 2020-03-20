@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
+import {I18nextProvider} from 'react-i18next';
+import i18n from './config/i18n';
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -46,9 +50,7 @@ import "./assets/registration/vendor/mdi-font/css/material-design-iconic-font.mi
 /*CSS REGISTRATION END*/
 
 
-
-
-import { createStore, applyMiddleware } from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import {Provider} from 'react-redux';
 
@@ -69,7 +71,9 @@ sagaMiddleware.run(sagas);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <I18nextProvider i18n={i18n}>
+            <App/>
+        </I18nextProvider>
     </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
