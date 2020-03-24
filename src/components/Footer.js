@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {withTranslation} from 'react-i18next';
 import Select from 'react-select';
-import { options } from '../config/options';
+import {options} from '../config/options';
 
 class Footer extends Component {
 
@@ -32,21 +32,6 @@ class Footer extends Component {
 
         return (
             <div>
-                <div className="App-Root">
-
-                    <Select
-                        defaultValue={options[0]}
-                        options={options}
-                        value={lang}
-                        onChange={this.changeLang}
-                        className="App-Select"
-                    />
-                    <h3 className="text-center pt-5">
-                        {t('Home')}
-                    </h3>
-                </div>
-
-
                 <div className="project_blog">
                     <div className="footer_background">
                         <div className="site-section subscribe bg-light">
@@ -58,7 +43,8 @@ class Footer extends Component {
                                     </div>
                                     <div className="col-md-6 ml-auto">
                                         <div className="d-flex">
-                                            <input type="email" className="form-control" placeholder="Enter your email" />
+                                            <input type="email" className="form-control"
+                                                   placeholder="Enter your email"/>
                                             <button type="submit" className="btn btn-secondary"><span
                                                 className="icon-paper-plane">Span</span></button>
                                         </div>
@@ -76,4 +62,4 @@ class Footer extends Component {
     }
 }
 
-export default withTranslation ()(Footer);
+export default withTranslation()(Footer);
