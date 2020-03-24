@@ -1,6 +1,7 @@
 export const options =
     [
         { value: 'en', label: 'English' },
-        { value: 'fr', label: 'French' },
+        { value: 'ru', label: 'Russia' },
+        { value: 'am', label: 'Armenia' },
 
     ];

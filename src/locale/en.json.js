@@ -1,8 +1,12 @@
 const en =  {
     "translations" :
     {
-        "Welcome to React Translation" :"Welcome to React Translate.",
-            "This is test view" :"This is the test view."
+        "Home" :"Home",
+        "Blog" :"Blog",
+        "Contact" :"Contact",
+        "Sign Up" :"Sign Up",
+        "Sign In" :"Sign In",
+        "Log Out" :"Sign Out",
     }
 };
 
